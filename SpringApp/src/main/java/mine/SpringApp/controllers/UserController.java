@@ -3,7 +3,7 @@ package mine.SpringApp.controllers;
 
 
 import jakarta.validation.Valid;
-import mine.SpringApp.repositories.User;
+import mine.SpringApp.entities.User;
 import mine.SpringApp.service.UserService;
 import mine.SpringApp.util.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +31,13 @@ public class UserController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("users", userService.getAll());
-        return "people/index";
+        return "index";
     }
 
     @GetMapping("/show")
     public String show(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", userService.getById(id));
-        return "people/show";
+        return "show";
     }
 
     @GetMapping("/new")
@@ -51,7 +51,7 @@ public class UserController {
         userValidator.validate(user, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "people/new";
+            return "new";
         }
         userService.save(user);
         return "redirect:/users";
@@ -60,7 +60,7 @@ public class UserController {
     @GetMapping("/edit")
     public String edit(Model model, @RequestParam("id") int id) {
         model.addAttribute("user", userService.getById(id));
-        return "people/edit";
+        return "edit";
     }
 
     @PostMapping("/update")
@@ -69,7 +69,7 @@ public class UserController {
         userValidator.validate(user, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "people/edit";
+            return "edit";
         }
         userService.update(id, user);
         return "redirect:/users";

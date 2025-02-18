@@ -3,7 +3,7 @@ package mine.SpringApp.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import mine.SpringApp.repositories.User;
+import mine.SpringApp.entities.User;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +22,7 @@ public class UserDAOImp implements UserDAO {
         return entityManager.createQuery("select p from User p", User.class).getResultList();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Optional<User> getByEmail(String email) {
         return entityManager.createQuery("SELECT p FROM User p WHERE p.email = :email", User.class)
                 .setParameter("email", email)

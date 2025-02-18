@@ -2,7 +2,7 @@ package mine.SpringApp.service;
 
 
 
-import mine.SpringApp.repositories.User;
+import mine.SpringApp.entities.User;
 
 import java.util.List;
 import java.util.Optional;

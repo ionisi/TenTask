@@ -1,7 +1,7 @@
 package mine.SpringApp.util;
 
 
-import mine.SpringApp.repositories.User;
+import mine.SpringApp.entities.User;
 import mine.SpringApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

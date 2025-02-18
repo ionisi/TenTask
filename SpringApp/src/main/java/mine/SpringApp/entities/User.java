@@ -1,4 +1,4 @@
-package mine.SpringApp.repositories;
+package mine.SpringApp.entities;
 
 
 import jakarta.persistence.*;

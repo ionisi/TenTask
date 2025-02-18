@@ -2,7 +2,7 @@ package mine.SpringApp.service;
 
 
 import mine.SpringApp.dao.UserDAO;
-import mine.SpringApp.repositories.User;
+import mine.SpringApp.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,19 +20,19 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getAll() {
         return userDAO.getAll();
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Optional<User> getByEmail(String email) {
         return userDAO.getByEmail(email);
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User getById(int id) {
         return userDAO.getById(id);
     }
